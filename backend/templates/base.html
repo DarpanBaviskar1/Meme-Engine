@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MemeEngine{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="{% url 'home' %}" class="flex items-center space-x-2 text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors">
+                    <span class="text-2xl">🚀</span>
+                    <span>MemeEngine</span>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="{% url 'news_list' %}" class="text-gray-600 hover:text-blue-600 transition-colors">Latest News</a>
+                    <a href="{% url 'news_list' %}?q=technology" class="text-gray-600 hover:text-blue-600 transition-colors">Technology</a>
+                    <a href="{% url 'news_list' %}?q=business" class="text-gray-600 hover:text-blue-600 transition-colors">Business</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p class="text-gray-400">Powered by News API • Built with Django</p>
+                <p class="text-sm text-gray-500 mt-2">Stay informed with the latest news and memes from around the world</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

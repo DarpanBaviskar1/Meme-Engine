@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                {% if query %}
+                    Memes for "{{ query }}"
+                {% else %}
+                    News Memes
+                {% endif %}
+            </h1>
+            <p class="text-gray-600">AI-generated memes from the latest news</p>
+        </div>
+
+        <!-- Error Message -->
+        {% if error %}
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+                    <strong>Error:</strong> {{ error }}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Memes Grid -->
+        <div class="max-w-6xl mx-auto">
+            {% if articles %}
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {% for article in articles %}
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="p-6">
+                                <h3 class="text-lg font-semibold mb-3 text-gray-800">{{ article.headline }}</h3>
+                                {% if article.description %}
+                                    <p class="text-gray-600 mb-4">{{ article.description }}</p>
+                                {% endif %}
+                                
+                                {% if article.meme_caption %}
+                                    <div class="mb-4 p-3 bg-yellow-50 rounded-lg">
+                                        <p class="text-sm font-medium text-gray-700">Meme Caption:</p>
+                                        <p class="text-gray-800">{{ article.meme_caption }}</p>
+                                    </div>
+                                {% endif %}
+                                
+                                {% if article.meme_image_b64 %}
+                                    <div class="text-center">
+                                        <img src="data:image/png;base64,{{ article.meme_image_b64 }}" 
+                                             alt="Generated Meme" 
+                                             class="rounded-lg shadow-md mx-auto max-w-full h-auto">
+                                    </div>
+                                {% else %}
+                                    <div class="text-center py-8 text-gray-500">
+                                        <p>Meme generation in progress...</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-12">
+                    <div class="text-gray-400 text-6xl mb-4">🎭</div>
+                    <h3 class="text-xl font-semibold text-gray-600 mb-2">No memes available</h3>
+                    <p class="text-gray-500 mb-6">Try searching for news to generate memes.</p>
+                    <a href="{% url 'news_list' %}" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                        Browse News
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Back to News Button -->
+        <div class="text-center mt-8">
+            <a href="{% url 'news_list' %}{% if query %}?q={{ query|urlencode }}{% endif %}" 
+               class="inline-flex items-center px-6 py-3 bg-gray-600 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to News
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 
