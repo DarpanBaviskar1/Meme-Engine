@@ -16,10 +16,10 @@ else:
     print("No memes generated yet.")
     
     
-ig_user_id = "17841476723984166"
-access_token = "EAAPYWucuY4oBPJfEUsI33WC0rRwmQ3XOzw1H5oBJaBFHRwzBDeJvRTlRTZB4eZBZAtpQt4Tjt4gOfnngecx7cQG2T0kORFFDiIbze24DYnGaZCJBpXfL8Fgzph3yr83UPcivZBpSyTFZAKeCLq4qZAKHtBqGCx7i7he3QuuWEZCZCIFmR65OZBDcJA5Xtgv58C9FDz"
+ig_user_id = "YOUR_BUSINESS_IG_ID_FROM_META_DEV"
+access_token = "YOUR_GRAPH_API_ACCESS_TOKEN"
 
-ACCESS_TOKEN = 'sl.u.AF6xElB5IyecIM7lRPiTQSOiScFHkcNdW-J_9VlI2kBfp3X_Sj2UFyVV3fIzhMkqdW2Pi9J6Bgk9yhcTmLs1E-2FcgoU9noF9KXFvmEjRLpH3YcMlCYBA3Oh5yJ8EYbUdLC1g-nzM9dHvsgrq1-XcQ2awpKcklxzL_m-oZ0MBju2Rdv2jpaZedYSH2KEroD6vDb178wCdk-ASR6fszpz2gPfxX_6oAGHH81Eqw8YSEH-RgSzSNtWA_JIpx2qH1B_uc_rt9Hyr5c73Dewp53c00_MuFduLWMS7aALJ--At4QAL6c48koMMNE3ekA7XvsYY_ljBcFeqoAgta_gfOmtYHufoLR0W7LZA8FdzRx5H12JD51uuqfrUXcHzZPAmO8IFyk22uRKrjx-9J-6CbQQdvGgjffWfLXZBAoVgmmZ40HgtqRNdRv0LgyFs3c9zmshs-WGrmcAALhkkX0jt4BpHBNNCfqWenel2_LxMdlYUHliBejcckYD3SvWkwyhRvvJ8NKy_DF0dtKrnXuOXuiGN2_d2wXUk4eAtfEJTvMnD-3zQDpzi7Ebar-9j3R-C0JQAHGO8YItHYV-kNLS254tRNpVwawC82x__SUs2JDkr-G6_j0XIiuz5fkEEL10lvyvTg2YPYPeM9jzCkXAbepcpDZIULovDl2UX2hwuHrrzyfsRqZ_h5T5sEElEauMdo_hnHTbu97WTvS5em_32GLr7lqtW4eqmtguJiYlEgcybFk4-GjMMyGTeePfH3KAxkjRvOhOOZ7Cv2Q0Icf790L7AZhuq6SWBmukYnwMWq8BciOTiHff2X9Mpxm3liVxRYNfoh6ofMI9LYj5NOamfFRNckhzNnhly8TOOAv8JxxDuob31gvAmQsdX6SPbO4i73UPTXmV0K7eU36QdmMgYkuoVwy1VHyxWH7_xoj_5FkRrKRz4hXXzxhXJwoS1C_k6oriaWANiVoTMZE6qQ8sBujxTuCMHNtvFCoQCB_Nluz5jqowMgFd8IfzK0TPy9KvWVVKzmMolKMOkdk0Kr07-rhiTbQYH0d1yGK9WA0rZfu3UhwZ_ldJ56-hprweX816RQSq8okmCPCdlMfJKBs3qHePN8leTrMcM-VHiSqkuBSD9Pa6uTnrZ0ZNC2LLgAWSNtP1B4amhKalwFbEGXX0rLyrbMzyVFwsC69L6GbhPtPGwkRxQbB1or0u9a7b0j3nqkH4VRf_3-Ay3Togzy3rn3dU-u0XV0a1vmu330yKnsH3aN399fE6E_y_mJNm8EYWAh0kzcpilj2bmDcrvvHniBwHN1G22U3KkVTC4Ukx56m_6axRfpay5wDv_wkPYXAaxJsz_UJjNxd-_elcqfNJbOq9B4Z1scBA0UV1ily44pHfFx8BF2DhREFx8DcKpwjmBPdGU955A69g1Y7TiGArSgEyixHchzzz99i6FOfkJwaaU382Zw' # Replace with your actual token
+ACCESS_TOKEN = 'YOUR_DROPBOX_ACCESS_TOKEN' # Replace with your actual token
 base64_string = latest_meme['meme_image_b64'].replace("data:image/png;base64,", "")
 image_data = base64.b64decode(base64_string)
 with open("output_image.png", "wb") as image_file:
@@ -155,4 +155,5 @@ try:
     for entry in dbx.files_list_folder("/Test").entries:
         print("Found in /Test:", entry.name)
 except Exception as err:
+
     print("Error listing /Test folder:", err)
